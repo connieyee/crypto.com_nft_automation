@@ -1,0 +1,1 @@
+# Crypto.com NFT automation
