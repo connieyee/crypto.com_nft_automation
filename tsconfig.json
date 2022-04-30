@@ -5,7 +5,8 @@
       "types": ["cypress", "node"],
       "paths": {
         "~/*": ["./cypress/*"]
-      }
+      },
+      "esModuleInterop": true
     },
     "include": ["**/*.ts"]
 }
