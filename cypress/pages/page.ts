@@ -1,3 +1,4 @@
+import { DEVICE, PAGE } from './constants'
 import pageFactory from './page.factory'
 
 /**
@@ -19,19 +20,19 @@ export default class Page {
     cy.visit(`/${path}`)
   }
 
-  private getPage (pageName: string): string {
-    if (!(pageName in this.page)) {
-      this.page.pageName = pageFactory.getNativePage(`${pageName}.locators`)
+  private getPage (pageName: PAGE, device: DEVICE): string {
+    if (!(pageName as PAGE in this.page)) {
+      this.page.pageName = pageFactory.getNativePage(pageName, device)
     }
     return this.page.pageName
   }
 
-  public getElem (pageName: string, locator: string): string {
+  public getElem (pageName: PAGE, locator: string): string {
     return this.getPage(pageName)[locator]
   }
 
-  public checkPageElem (pageName: string): void {
-    const obj = this.getPage(pageName)
+  public checkPageElem (pageName: PAGE, device: DEVICE): void {
+    const obj = this.getPage(pageName, device)
     Object.keys(obj).forEach((locator) => {
       if (locator === 'url') {
         cy.url().should('eq', obj[locator])
@@ -46,7 +47,7 @@ export default class Page {
     })
   }
 
-  public checkPageRedirect (pageName: string): void {
+  public checkPageRedirect (pageName: PAGE): void {
     const obj = this.getPage(pageName)
     Object.keys(obj).forEach((locator) => {
       const selector = this.getElem(pageName, locator)
