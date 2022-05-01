@@ -1,8 +1,8 @@
 name: CI
 
 on:
-  create:
-    push:
+  push:
+    branches:
       - master
       - dev
 
