@@ -41,8 +41,15 @@ export default class Page {
       } else if (locator.startsWith('exist')) {
         cy.get(obj[locator]).should('exist')
       } else if (!locator.startsWith('num') &&
+      !locator.startsWith('popup') &&
       !locator.endsWith('Url')) {
-        cy.get(obj[locator]).should('be.visible')
+        // cy.log(cy.get('ot-sdk-container').its('length'))
+        // if (Cypress.dom.isVisible(cy.get(this.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'))) {
+        //   cy.get(this.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: 5000 }).click()
+        // }
+        cy.get(obj[locator])
+          // .scrollIntoView()
+          .should('be.visible')
       }
     })
   }

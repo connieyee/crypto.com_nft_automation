@@ -3,7 +3,6 @@ import { DEVICE, PAGE } from '../constants'
 export default class TopCollectiblesLocators {
   readonly topCollectibles: string
   readonly numTopCollectiblesDropdown: number
-  readonly existTopCollectiblesDropdown: string
   readonly valueTopCollectiblesSortBy: (value: 'Sales Volume' | 'Most Likes' | 'Most Views') => string
   readonly topCollectiblesPeriodToday: string
   readonly topCollectiblesPeriod7days: string
@@ -29,23 +28,29 @@ export default class TopCollectiblesLocators {
   readonly topCollectiblesProfileLink: string
   readonly topCollectiblesProfileLinkUrl: string
   readonly topCollectiblesShowMore: string
+  readonly popupSortByDropdown: string
+  readonly popupPeriodDropdown: string
 
   constructor (page: PAGE, device: DEVICE) {
     let topContainer = ''
     switch (page) {
-      case PAGE.HOMEPAGE:
+      case PAGE.HOME_PAGE:
         topContainer = 'div[class*="HomePage_container__"]'
         break
     }
     this.topCollectibles = `${topContainer} div[data-test-id="top-collectibles-div"]`
+
+    if (device === DEVICE.DESKTOP) {
+      this.topCollectiblesPeriodToday = `${this.topCollectibles} button > div:contains("Today")`
+      this.topCollectiblesPeriod30days = `${this.topCollectibles} button > div:contains("Last 30 Days")`
+      this.topCollectiblesPeriodAll = `${this.topCollectibles} button > div:contains("All Time")`
+    }
+
     // Top Collectibles
-    this.numTopCollectiblesDropdown = 2
-    this.existTopCollectiblesDropdown = `${this.topCollectibles} div[data-test-id="undefined-dropdown-menu"]`
+    this.popupSortByDropdown = `${this.topCollectibles} > div:nth-child(2) > div:nth-child(1) div[data-test-id="undefined-dropdown-menu"]`
+    this.popupPeriodDropdown = `${this.topCollectibles} > div:nth-child(2) > div:nth-child(2) div[data-test-id="undefined-dropdown-menu"]`
     this.valueTopCollectiblesSortBy = (value = 'Sales Volume') => `${this.topCollectibles} button > div:contains(${value})`
-    this.topCollectiblesPeriodToday = `${this.topCollectibles} button > div:contains("Today")`
     this.topCollectiblesPeriod7days = `${this.topCollectibles} button > div:contains("Last 7 Days")`
-    this.topCollectiblesPeriod30days = `${this.topCollectibles} button > div:contains("Last 30 Days")`
-    this.topCollectiblesPeriodAll = `${this.topCollectibles} button > div:contains("All Time")`
     this.numtopCollectiblesNftCardContainer = 12
     this.topCollectiblesNftCardContainer = `${this.topCollectibles} div[data-test-id="nftCard-container"]`
     this.topCollectiblesNftCardImage = `${this.topCollectibles} div[data-test-id="nftCard-image"]`
@@ -63,7 +68,7 @@ export default class TopCollectiblesLocators {
     this.topCollectiblesNftCardLikesCount = `${this.topCollectibles} div[data-test-id="nftCard-likes-count"]`
     this.topCollectiblesNftCardLink = `${this.topCollectibles} > div:nth-child(3) > div[class*="NftCard_grid__"] > a:nth-child(1)`
     this.topCollectiblesNftCardLinkUrl = 'https://crypto.com/nft/?asset='
-    this.topCollectiblesProfileLink = `${this.topCollectibles} a[class*="NameOnlyUserProfile_link__"]:nth-child(1)`
+    // this.topCollectiblesProfileLink = `${this.topCollectibles} a[class*="NameOnlyUserProfile_link__"]:nth-child(1)`
     this.topCollectiblesProfileLinkUrl = 'https://crypto.com/nft/profile/'
     this.topCollectiblesShowMore = `${this.topCollectibles} button > div:contains('show more')`
   }

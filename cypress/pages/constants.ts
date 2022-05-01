@@ -1,6 +1,8 @@
 export enum PAGE {
-  HOMEPAGE = 'homepage',
-  NFT_DETAILS = 'nft_details'
+  HOME_PAGE = 'home_page',
+  NFT_DETAILS_ACCEPTING_OFFER_PAGE = 'nft_details_accepting_offer',
+  NFT_DETAILS_BID_PAGE= 'nft_details_bid',
+  NFT_DETAILS_BUY_PAGE= 'nft_details_buy'
 }
 
 export enum DEVICE {

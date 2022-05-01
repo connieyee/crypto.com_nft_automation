@@ -8,8 +8,7 @@ export default class HeaderLocators {
   readonly urlLogin: string
   readonly navSignup: string
   readonly urlSignup: string
-  readonly existNftLink?: string
-  readonly existNftLinkUrl?: string
+  readonly nftLogoLinkUrl?: string
   readonly headerSearchBoxInput: string
   readonly navMarketplaceLink: string
   readonly navMarketplaceLinkUrl: string
@@ -20,13 +19,14 @@ export default class HeaderLocators {
   readonly navLoginLinkUrl: string
   readonly navSignupLink: string
   readonly navSignupLinkUrl: string
+  readonly headerSearch: string
+  readonly nftLogoLink: string
 
   constructor (page: PAGE, device: DEVICE) {
     // header
     if (device === DEVICE.MOBILE || device === DEVICE.TABLET) {
       this.navMenu = 'svg[data-test-id="nav-menu"]'
-      this.existNftLink = 'a[href="/nft/"]'
-      this.existNftLinkUrl = 'https://crypto.com/nft/'
+      this.headerSearch = 'div[class*="navigation_mobileRightNav__"]'
     }
     if (device === DEVICE.DESKTOP) {
       this.headerSearchBoxInput = 'input[data-test-id="nav-search-box-input"]'
@@ -42,6 +42,10 @@ export default class HeaderLocators {
       this.navSignupLink = 'a[data-test-id="nav-signup"]'
       this.navSignupLinkUrl = 'https://crypto.com/nft/register'
     }
+
+    this.nftLogoLinkUrl = 'https://crypto.com/nft/'
+    this.nftLogoLink = 'svg[data-test-id="nft-logo"]'
+
     // todo
 
     // after login
