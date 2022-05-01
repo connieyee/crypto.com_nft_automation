@@ -51,7 +51,10 @@ export default class Page {
     Object.keys(obj).forEach((locator) => {
       const selector = this.getElem(pageName, locator)
       if (locator.endsWith('Link')) {
-        if (locator === 'subscriptionLink') {
+        if (locator === 'subscriptionLink' ||
+            locator === 'footerFaqLink' ||
+            locator === 'footerTermsLink' ||
+            locator === 'footerPrivacyLink') {
           cy.get(selector)
             .invoke('removeAttr', 'target')
         }

@@ -9,7 +9,7 @@ describe('HomePage testing', () => {
 
   it('HomePage redirection check', () => {
     cy.visit('/')
-    cy.get(page.getElem('homepage', 'consentAcceptAll')).click()
+    cy.get(page.getElem('homepage', 'consentAcceptAll'), { timeout: 5000 }).click()
     page.checkPageRedirect('homepage')
   })
 })
