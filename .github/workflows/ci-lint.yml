@@ -23,7 +23,7 @@ jobs:
         run: npm install
 
       - name: Lint with eslint and typescript
-        run: eslint --cache --ext .js,.ts ./cypress
+        run: npm run eslint cypress --ext .js,.ts --max-warnings=20
       # Todo: Implement test
       # - name: Test with jest
       #   run: yarn run test --ci
