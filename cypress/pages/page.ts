@@ -20,19 +20,22 @@ export default class Page {
     cy.visit(`/${path}`)
   }
 
-  private getPage (pageName: PAGE, device: DEVICE): string {
+  private getPage (pageName: PAGE, device?: DEVICE, options?: unknown): string {
     if (!(pageName as PAGE in this.page)) {
-      this.page.pageName = pageFactory.getNativePage(pageName, device)
+      this.page.pageName = pageFactory.getNativePage(pageName, device, options)
     }
     return this.page.pageName
   }
 
-  public getElem (pageName: PAGE, locator: string): string {
-    return this.getPage(pageName)[locator]
+  // get elem in page
+  public getElem (pageName: PAGE, locator: string, device?: DEVICE, options?: unknown, isFunction?: string): string {
+    const obj = this.getPage(pageName, device, options)
+    return isFunction ? obj[locator](isFunction) : obj[locator]
   }
 
-  public checkPageElem (pageName: PAGE, device: DEVICE): void {
-    const obj = this.getPage(pageName, device)
+  // loop and check everthing visible/ exist in page
+  public checkPageElem (pageName: PAGE, device: DEVICE, options?: unknown): void {
+    const obj = this.getPage(pageName, device, options)
     Object.keys(obj).forEach((locator) => {
       if (locator === 'url') {
         cy.url().should('eq', obj[locator])
@@ -40,20 +43,28 @@ export default class Page {
         cy.get(obj[locator]()).should('be.visible')
       } else if (locator.startsWith('exist')) {
         cy.get(obj[locator]).should('exist')
+        // except these conditions
       } else if (!locator.startsWith('num') &&
       !locator.startsWith('popup') &&
+      !locator.startsWith('skip') &&
       !locator.endsWith('Url')) {
-        // cy.log(cy.get('ot-sdk-container').its('length'))
-        // if (Cypress.dom.isVisible(cy.get(this.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'))) {
-        //   cy.get(this.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: 5000 }).click()
-        // }
-        cy.get(obj[locator])
-          // .scrollIntoView()
-          .should('be.visible')
+        if (pageName === PAGE.NFT_DETAILS_BASE_PAGE ||
+          pageName === PAGE.NFT_DETAILS_ACCEPTING_OFFER_PAGE ||
+          pageName === PAGE.NFT_DETAILS_BUY_PAGE ||
+          pageName === PAGE.NFT_DETAILS_BID_PAGE ||
+          pageName === PAGE.NFT_DETAILS_EDITION_PAGE) {
+          cy.get(obj[locator])
+            .scrollIntoView({ offset: { top: -50, left: 0 } })
+            .should('be.visible')
+        } else {
+          cy.get(obj[locator])
+            .should('be.visible')
+        }
       }
     })
   }
 
+  // loop and check all elem ends with 'Link' in page
   public checkPageRedirect (pageName: PAGE): void {
     const obj = this.getPage(pageName)
     Object.keys(obj).forEach((locator) => {
@@ -67,14 +78,43 @@ export default class Page {
             .invoke('removeAttr', 'target')
         }
         cy.get(selector).click({ force: true })
+        // check these elem will redirect browser to url of 'LinkUrl'
         const url = this.getElem(pageName, `${locator}Url`)
         cy.url().should('include', url)
         cy.go('back')
+        // for those redirecting domain
       } else if (locator.endsWith('Href')) {
         const href = this.getElem(pageName, `${locator}Url`)
-        cy.log(href)
         cy.get(selector).should('have.attr', 'href', href)
       }
+    })
+  }
+
+  // loop and check all elem starts with {}
+  public checkPopUpElem (pageName: PAGE, popupName: string): void {
+    const pageObj = this.getPage(pageName)
+    Object.keys(pageObj).forEach((locator) => {
+      if (locator.startsWith(popupName)) {
+        cy.get(pageObj[locator])
+          .should('be.visible')
+      }
+    })
+  }
+
+  // check array of locator in descending order
+  public checkDescending (pageName: PAGE, elemName: string): void {
+    const arrayDollars = []
+    cy.get(this.getElem(pageName, elemName)).each(($el) => {
+      if (elemName === 'topCollectionVolume') {
+        const unit: string = $el.text().substring($el.text().length - 1)
+        arrayDollars.push(unit === 'K' ? parseFloat($el.text()) * 1000 : parseFloat($el.text()) * 1000000)
+      } else if (elemName === 'topCollectionVolumePer') {
+        arrayDollars.push($el.text().substring($el.text().length - 1).substring(1))
+      }
+    }).then(() => {
+      const sorted = [...arrayDollars]
+      sorted.sort((a, b) => b - a)
+      expect(arrayDollars).to.deep.equal(sorted)
     })
   }
 }

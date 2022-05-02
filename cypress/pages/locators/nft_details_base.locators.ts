@@ -2,7 +2,8 @@
 export default class NftDetailsBaseLocators {
   readonly initiUrl: string
   readonly popupModalBody: string
-  readonly listingAssetImage: string
+  readonly skipAssetImage: string
+  readonly skipAssetVideo: string
   readonly listingCryptoChainButton: string
   readonly backButton: string
   readonly likeButton: string
@@ -50,30 +51,42 @@ export default class NftDetailsBaseLocators {
   readonly actionBarEdition: string
   readonly actionBarAssetName: string
   readonly nftDetailOfferButton: string
-  actionBarRoyaltiesMessage: string
-  listingShareButton: string
+  readonly actionBarRoyaltiesMessage: string
+  readonly listingShareButton: string
+  readonly popupPropertiesBody: string
+  readonly popupPropertiesButton: string
+  readonly popupPropertiesContainer: string
+  readonly popupPropertiesPercentage: string
+  readonly popupPropertiesTitle: string
+  readonly listingMoreButton: string
+  readonly popupHistoryContainer: string
+  readonly popupOffersContainer: string
 
   constructor () {
     this.initiUrl = 'https://crypto.com/nft/?asset='
     this.popupModalBody = 'div[data-test-id="undefined-popup"]'
+    // asset image
+    this.skipAssetImage = 'img[data-test-id="listing-asset-image"]'
+    this.skipAssetVideo = 'div[class*="AssetImageContainer_artImage__"] > video'
 
-    // this.listingAssetImage = '[data-test-id="listing-asset-image"]'
-    // this.backButton = `${this.popupModalBody} div[data-test-id="back-button"]`
+    this.backButton = `${this.popupModalBody} div[data-test-id="back-button"]`
     this.likeButton = `${this.popupModalBody} svg[data-test-id="like-button"]`
     this.nftCardLikesCount = `${this.popupModalBody} div[data-test-id="nftCard-likes-count"]`
     this.listingViewsLogo = `${this.popupModalBody} svg[data-test-id="listing-views-logo"]`
     this.listingViewsCount = `${this.popupModalBody} div[data-test-id="listing-views-count"]`
     this.listingShareButton = `${this.popupModalBody} div[data-test-id="listing-share-button"]`
     this.listingShareLogo = `${this.popupModalBody} svg[data-test-id="listing-share-logo"]`
-    this.popupShareDropdown = `${this.popupModalBody} div[data-test-id="listing-share-button-dropdown-menu"]`
 
+    // Share Dropdown
+    this.popupShareDropdown = `${this.popupModalBody} div[data-test-id="listing-share-button-dropdown-menu"]`
     this.popupShareFacebook = `${this.popupModalBody} a[data-test-id="listing-share-facebook"]`
     this.popupShareTwitter = `${this.popupModalBody} a[data-test-id="listing-share-twitter"]`
     this.popupShareTelegram = `${this.popupModalBody} a[data-test-id="listing-share-telegram"]`
     this.popupShareWhatsapp = `${this.popupModalBody} a[data-test-id="listing-share-whatsapp"]`
     this.popupShareEmail = `${this.popupModalBody} a[data-test-id="listing-share-email"]`
-    this.listingShareButton = `${this.popupModalBody} div[data-test-id="listing-more-button"]`
+    this.listingMoreButton = `${this.popupModalBody} div[data-test-id="listing-more-button"]`
 
+    // More dropdown
     this.popupMoreButtonDropdown = `${this.popupModalBody} div[data-test-id="listing-more-button-dropdown-menu"]`
     this.popupReportButton = `${this.popupModalBody} button[data-test-id="listing-report-button"]`
 
@@ -94,18 +107,30 @@ export default class NftDetailsBaseLocators {
 
     this.listingAssetDescription = `${this.popupModalBody} div[data-test-id="listing-asset-description"]`
     this.nftDetailTag = `${this.popupModalBody} div[data-test-id="nftDetail-tag"]`
+
     // if edition > 0
-    // this.listingSelectEditionUpArrow = `${this.popupModalBody} div[data-test-id="listing-select-edition-up-arrow"]`
-    // this.listingSelectEditionDownArrow = `${this.popupModalBody} div[data-test-id="listing-select-edition-down-arrow"]`
+    // this.existSelectEditionUpArrow = `${this.popupModalBody} div[data-test-id="listing-select-edition-up-arrow"]`
+    // this.existSelectEditionDownArrow = `${this.popupModalBody} div[data-test-id="listing-select-edition-down-arrow"]`
+
+    // Properties
+    this.popupPropertiesButton = `${this.popupModalBody} div[data-test-id="listing-properties-button"]`
+    this.popupPropertiesContainer = `${this.popupModalBody} div[class*="PropertiesContainer_property__"]`
+    this.popupPropertiesTitle = `${this.popupModalBody} div[class*="PropertiesContainer_propertyTitle__"]`
+    this.popupPropertiesBody = `${this.popupModalBody} div[class*="PropertiesContainer_propertyBody__"]`
+    this.popupPropertiesPercentage = `${this.popupModalBody} div[class*="PropertiesContainer_propertyPercentage__"]`
 
     this.nftDetailEdition = `${this.popupModalBody} div[data-test-id="nftDetail-edition"]`
     this.listingSelectEditionButton = `${this.popupModalBody} a[data-test-id="listing-select-edition-button"]`
-    this.listingOwnerTab = `${this.popupModalBody} div[data-test-id="listing-owner-tab"]`
+    this.listingOwnerTab = `${this.popupModalBody} div[class*="NFTDetailsTabs_tab__"] div[data-test-id="listing-owner-tab"]`
+    // History tab
     this.listingHistoryTab = `${this.popupModalBody} div[data-test-id="listing-history-tab"]`
+    this.popupHistoryContainer = `${this.popupModalBody} div[data-test-id="listing-history-container"]`
+    // Offers tab
     this.listingOffersTab = `${this.popupModalBody} div[data-test-id="listing-offers-tab"]`
-    this.listingOwnerTab = `${this.popupModalBody} div[data-test-id="listing-owner-tab"]`
-    this.listingOwnerAvatar = `${this.popupModalBody} div[data-test-id="listing-owner-avatar"] > img`
+    this.popupOffersContainer = `${this.popupModalBody} div[data-test-id="listing-offers-container"]`
 
+    this.listingOwnerTab = `${this.popupModalBody} div[class*="NFTOwnership_container__"] div[data-test-id="listing-owner-tab"]`
+    this.listingOwnerAvatar = `${this.popupModalBody} div[data-test-id="listing-owner-avatar"] > img`
     this.listingOwnerLabel = `${this.popupModalBody} span[data-test-id="listing-owner-label"]`
     this.listingOwnerUsername = `${this.popupModalBody} div[data-test-id="listing-owner-username"]`
     this.nftDetailCroAddressDiv = `${this.popupModalBody} div[data-test-id="nftDetail-croAddress-div"]`
@@ -115,6 +140,5 @@ export default class NftDetailsBaseLocators {
     this.actionBarAssetImage = `${this.popupModalBody} div[data-test-id="action-button-bar-asset-image"]`
     this.actionBarEdition = `${this.popupModalBody} div[data-test-id="action-button-bar-edition"]`
     this.actionBarAssetName = `${this.popupModalBody} span[data-test-id="action-button-bar-asset-name"]`
-    this.actionBarRoyaltiesMessage = `${this.popupModalBody} div[data-test-id="action-button-bar-royalties-message"]`
   }
 }

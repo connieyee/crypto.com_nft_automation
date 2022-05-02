@@ -9,6 +9,8 @@ export default class TopCreatorLocators {
   readonly topCreatorAvatarLinkUrl: string
   readonly numIsSelected: number
   readonly isSelected: string
+  readonly isDraggable: string
+  readonly creators: string
 
   constructor (page: PAGE, device: DEVICE) {
     let topContainer = ''
@@ -31,7 +33,9 @@ export default class TopCreatorLocators {
 
     // Top Creator
     this.isSelected = `${this.topCreaters} div.is-selected`
+    this.isDraggable = `${this.topCreaters} div.is-draggable`
     this.topCreatorsDiv = `${this.topCreaters} div[data-test-id="top-creators-div"]`
+    this.creators = `${this.topCreatorsDiv} > div:nth-child(2) > div > div.is-draggable > div > div`
     this.topCreatorLeftArrow = 'svg[data-test-id="topCreator-left-arrow"]'
     this.topCreatorRightArrow = 'svg[data-test-id="topCreator-right-arrow"]'
     this.topCreatorAvatarLink = `${this.topCreaters} > div > div:nth-child(2) > div > div.is-draggable > div > div:nth-child(1) > a`

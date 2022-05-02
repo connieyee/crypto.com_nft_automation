@@ -1,4 +1,3 @@
-import { DEVICE, PAGE } from '../constants'
 
 export default class FooterLocators {
   readonly footerContainer: string
@@ -18,10 +17,11 @@ export default class FooterLocators {
   readonly footerDiscordHrefUrl: string
   readonly footerTelegramHref: string
   readonly footerTelegramHrefUrl: string
+  readonly intercomApp: string
 
-  constructor (page: PAGE, device: DEVICE) {
+  constructor () {
     // footer
-    this.footerContainer = 'div[class*="Footer_container__"]'
+    this.footerContainer = '#root div[class*="Footer_container__"]'
     this.footerInstagramHref = `${this.footerContainer} a[data-test-id="footer-instagram"]`
     this.footerInstagramHrefUrl = 'https://www.instagram.com/cryptocomnft'
     this.footerTwitterHref = `${this.footerContainer} a[data-test-id="footer-twitter"]`
@@ -38,5 +38,6 @@ export default class FooterLocators {
     this.footerTermsLinkUrl = '/nft/terms'
     this.footerPrivacyLink = `${this.footerContainer} a[data-test-id="footer-privacy"]`
     this.footerPrivacyLinkUrl = '/nft/privacy'
+    // this.intercomApp = 'div.intercom-lightweight-app-launcher.intercom-launcher'
   }
 }

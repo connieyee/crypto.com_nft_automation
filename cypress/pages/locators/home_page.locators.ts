@@ -15,13 +15,13 @@ function homepage (page: PAGE, device: DEVICE): void {
     this,
     new HomeLocators(),
     new HeaderLocators(page, device),
-    new ConsentLocators(page, device),
-    new Subscription(page, device),
+    new ConsentLocators(),
+    new Subscription(),
     new Carousel(page, device),
     new TopCollections(page, device),
     new TopCreatorLocators(page, device),
     new TopCollectiblesLocators(page, device),
-    new FooterLocators(page, device)
+    new FooterLocators()
   )
 }
 
