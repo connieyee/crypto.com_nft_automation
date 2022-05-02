@@ -49,8 +49,8 @@ function dropspage (page: PAGE, device: DEVICE, options: unknown): void {
     this,
     new DropsPageLocators(options),
     new HeaderLocators(page, device),
-    new Subscription(page, device),
-    new FooterLocators(page, device)
+    new Subscription(),
+    new FooterLocators()
   )
 }
 

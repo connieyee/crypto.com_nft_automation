@@ -17,6 +17,7 @@ export default class FooterLocators {
   readonly footerDiscordHrefUrl: string
   readonly footerTelegramHref: string
   readonly footerTelegramHrefUrl: string
+  readonly intercomApp: string
 
   constructor () {
     // footer
@@ -37,5 +38,6 @@ export default class FooterLocators {
     this.footerTermsLinkUrl = '/nft/terms'
     this.footerPrivacyLink = `${this.footerContainer} a[data-test-id="footer-privacy"]`
     this.footerPrivacyLinkUrl = '/nft/privacy'
+    // this.intercomApp = 'div.intercom-lightweight-app-launcher.intercom-launcher'
   }
 }

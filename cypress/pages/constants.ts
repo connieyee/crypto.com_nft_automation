@@ -9,6 +9,8 @@ export enum PAGE {
   NFT_DETAILS_EDITION_PAGE = 'nft_details_edition'
 }
 
+export const TIMEOUT = 10000
+
 export enum DEVICE {
   MOBILE = 'mobile',
   TABLET = 'tablet',

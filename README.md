@@ -29,8 +29,14 @@ This repo contains an automation test on Crypto.com/nft, with the tests written 
 - For NFT details page, three most common cases(`bid`, `buy now`, `accepting offer`) are chosen for elements checking
 
 ## Getting Started
-install node module `npm install`
-then run `npm run test`
+
+1. install nodejs from https://nodejs.org/en/download/
+
+2. cd into the repo `cd crypto.com_nft_automation`
+
+3. install node module `npm install`
+
+4. then run `npm run test`
 
 ## Linting
 

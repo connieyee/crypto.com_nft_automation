@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const fs = require('fs')
 /// <reference types="cypress" />
 // ***********************************************************
@@ -17,7 +18,7 @@ const fs = require('fs')
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
-module.exports = (on, config) => {
+module.exports = (on) => {
   // `on` is used to hook into various events Cypress emits
   // `config` is the resolved Cypress config
   // on('file:preprocessor', cypressTypeScriptPreprocessor)

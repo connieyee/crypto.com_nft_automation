@@ -50,15 +50,16 @@ export default class TopCreatorLocators {
       }
       // Top Collections
 
-      this.topCollectionsDiv = `${topContainer} > div[data-test-id="top-creators-div"]`
+      this.topCollectionsDiv = `${this.topCollections} > div[data-test-id="top-creators-div"]`
       // sort by
       this.popupTopCollectionsSortByDropdown = `${this.topCollectionsDiv} > div:nth-child(2) > div:nth-child(1) > div:nth-child(1) div[data-test-id="undefined-dropdown-menu"]`
-      this.popupTopCollectionsSortBySalesVolume = `${this.popupTopCollectionsSortByDropdown} div:contains("Sales Volume")`
-      this.popupTopCollectionsSortBySalesVolumePer = `${this.popupTopCollectionsSortByDropdown} div:contains("Sales Volume %")`
-      this.popupTopCollectionsSortByFloorPrice = `${this.popupTopCollectionsSortByDropdown} div:contains("Floor Price")`
-      this.popupTopCollectionsSortByFloorPricePer = `${this.popupTopCollectionsSortByDropdown} div:contains("Floor Price %")`
+      this.popupTopCollectionsSortBySalesVolume = `${this.popupTopCollectionsSortByDropdown} > div > div:contains("Sales Volume")`
+      this.popupTopCollectionsSortBySalesVolumePer = `${this.popupTopCollectionsSortByDropdown} > div > div:contains("Sales Volume %")`
+      this.popupTopCollectionsSortByFloorPrice = `${this.popupTopCollectionsSortByDropdown} > div >  div:contains("Floor Price")`
+      this.popupTopCollectionsSortByFloorPricePer = `${this.popupTopCollectionsSortByDropdown} > div > div:contains("Floor Price %")`
+
       this.topCollectionCell = `${this.topCollectionsDiv} > div:nth-child(2) > div:nth-child(2) > div > div`
-      this.topCollectionVolume = `${this.topCollectionCell} div:nth-child(2) > div:nth-child(2) > span:nth-child(2) > div`
+      this.topCollectionVolume = `${this.topCollectionCell} div:nth-child(2) > div > div:nth-child(2) > span:nth-child(2) > div`
 
       this.popupTopCollectionsPeriodDropdown = `${this.topCollectionsDiv} > div:nth-child(2) > div:nth-child(1) > div:nth-child(2) div[data-test-id="undefined-dropdown-menu"]`
       this.valueTopCollectionsSortBy = (value = 'Sales Volume') => `${this.topCollections} button > div:contains(${value})`

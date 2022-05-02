@@ -42,6 +42,15 @@ export default class TopCollectiblesLocators {
   readonly marketplaceIsCuratedButton: string
   readonly marketplaceFilterButton: string
   readonly marketplaceSortButton: string
+  numbatch: number
+  marketplaceNftCardContainer: string
+  existInfiniteLoader: string
+  popupFilterMinPriceInput: string
+  popupFilterApply: string
+  popupFilterAuction: string
+  popupFilterBuyNow: string
+  popupFilterClearAll: string
+  popupFilterMaxPriceInput: string
 
   constructor (page: PAGE, device: DEVICE) {
     let topContainer = ''
@@ -61,7 +70,10 @@ export default class TopCollectiblesLocators {
     }
 
     if (page === PAGE.MARKETPLACE_PAGE) {
+      this.numbatch = 6
+      this.marketplaceNftCardContainer = 'div[data-test-id="nftCard-container"]'
       this.marketplaceTitle = `${this.topCollectibles} h2[data-test-id="marketplace-title"]`
+      this.existInfiniteLoader = 'div[class*="InfiniteScrollAsset_loader__"]'
       if (device === DEVICE.DESKTOP) {
         this.marketplaceCategoryArtButton = `${this.topCollectibles} button[data-test-id="marketplace-category-art-button"]`
         this.marketplaceCategoryCelebritiesButton = `${this.topCollectibles} button[data-test-id="marketplace-category-celebrities-button"]`
@@ -74,6 +86,13 @@ export default class TopCollectiblesLocators {
       this.marketplaceIsCuratedButton = `${this.topCollectibles} button[data-test-id="marketplace-isCurated-button"]`
       this.marketplaceFilterButton = `${this.topCollectibles} button[data-test-id="marketplace-filter-button"]`
       this.marketplaceSortButton = `${this.topCollectibles} button[data-test-id="marketplace-sort-button"]`
+      // filter
+      this.popupFilterMinPriceInput = `${this.topCollectibles} input[data-test-id="marketplace-filter-minPrice-input"]`
+      this.popupFilterMaxPriceInput = `${this.topCollectibles} input[data-test-id="marketplace-filter-maxPrice-input"]`
+      this.popupFilterBuyNow = `${this.topCollectibles} button[data-test-id="marketplace-filter-buyNow-button"]`
+      this.popupFilterAuction = `${this.topCollectibles} button[data-test-id="marketplace-filter-auction-button"]`
+      this.popupFilterApply = `${this.topCollectibles} button[data-test-id="marketplace-filter-apply-button"]`
+      // this.popupFilterClearAll = `${this.topCollectibles} button[data-test-id="marketplace-filter-clearAll-button"]`
     }
 
     // Top Collectibles
@@ -90,9 +109,20 @@ export default class TopCollectiblesLocators {
     this.topCollectiblesNftCardImage = `${this.topCollectibles} div[data-test-id="nftCard-image"]`
     if (page === PAGE.HOME_PAGE) {
       this.topCollectiblesNftCardTotalSalesTag = `${this.topCollectibles} button[data-test-id="nftCard-total-sales-tag"]`
-      // this.topCollectiblesNftCardLink = `${this.topCollectibles} > div:nth-child(3) > div[class*="NftCard_grid__"] > a:nth-child(1)`
       this.topCollectiblesShowMore = `${this.topCollectibles} button > div:contains('show more')`
+      this.topCollectiblesNftCardLink = `${this.topCollectibles} > div:nth-child(3) > div[class*="NftCard_grid__"] > a:nth-child(1)`
+      this.topCollectiblesNftCardLinkUrl = 'https://crypto.com/nft/?asset='
+      this.topCollectiblesProfileLink = `${this.topCollectibles} div[class*="NftCard_grid__"] > a:nth-child(1) a[class*="NameOnlyUserProfile_link__"]`
+      this.topCollectiblesProfileLinkUrl = 'https://crypto.com/nft/profile/'
     }
+
+    if (page === PAGE.MARKETPLACE_PAGE) {
+      this.topCollectiblesNftCardLink = `${this.topCollectibles} div[class*="NftBrowse_container__"] > div > div > div > div:nth-child(1) > a`
+      this.topCollectiblesNftCardLinkUrl = 'https://crypto.com/nft/?asset='
+      this.topCollectiblesProfileLink = `${this.topCollectibles} div[class*="NftBrowse_container__"] > div > div > div > div:nth-child(1) > a a[class*="NameOnlyUserProfile_link__"]`
+      this.topCollectiblesProfileLinkUrl = 'https://crypto.com/nft/profile/'
+    }
+
     this.topCollectiblesNftCardEditionsMintedLabel = `${this.topCollectibles} div[data-test-id="nftCard-editions-minted-label"]`
     this.topCollectiblesNftCardCroLogo = `${this.topCollectibles} svg[data-test-id="nftCard-cro-logo"]`
     this.topCollectiblesNftCardAssetName = `${this.topCollectibles} div[data-test-id="nftCard-asset-name"]`
@@ -104,9 +134,5 @@ export default class TopCollectiblesLocators {
     this.topCollectiblesNftCardCreatorUsername = `${this.topCollectibles} span[data-test-id="nftCard-creator-username"]`
     this.topCollectiblesLikeButton = `${this.topCollectibles} svg[data-test-id="like-button"]`
     this.topCollectiblesNftCardLikesCount = `${this.topCollectibles} div[data-test-id="nftCard-likes-count"]`
-
-    this.topCollectiblesNftCardLinkUrl = 'https://crypto.com/nft/?asset='
-    this.topCollectiblesProfileLink = `${this.topCollectibles} a[class*="NameOnlyUserProfile_link__"]:nth-child(1)`
-    this.topCollectiblesProfileLinkUrl = 'https://crypto.com/nft/profile/'
   }
 }

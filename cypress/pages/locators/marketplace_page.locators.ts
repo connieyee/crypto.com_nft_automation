@@ -4,6 +4,7 @@ import TopCollections from './topCollections.locators'
 import Subscription from './subscription.locators'
 import HeaderLocators from './header.locators'
 import TopCollectiblesLocators from './topCollectibles.locators'
+import ConsentLocators from './consent.locators'
 
 class MarketplacePageLocators {
 }
@@ -14,9 +15,10 @@ function marketplacepage (page: PAGE, device: DEVICE): void {
     new MarketplacePageLocators(),
     new HeaderLocators(page, device),
     new TopCollections(page, device),
+    new ConsentLocators(),
     new TopCollectiblesLocators(page, device),
-    new Subscription(page, device),
-    new FooterLocators(page, device)
+    new Subscription(),
+    new FooterLocators()
   )
 }
 
