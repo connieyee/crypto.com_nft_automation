@@ -9,8 +9,8 @@ export default class TopCreatorLocators {
   readonly topCreatorAvatarLinkUrl: string
   readonly numIsSelected: number
   readonly isSelected: string
-  isDraggable: string
-  creators: string
+  readonly isDraggable: string
+  readonly creators: string
 
   constructor (page: PAGE, device: DEVICE) {
     let topContainer = ''

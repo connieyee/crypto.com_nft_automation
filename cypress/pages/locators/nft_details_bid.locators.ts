@@ -35,7 +35,7 @@ function nftDetailBid (page: PAGE, device: DEVICE): void {
     new HeaderLocators(page, device),
     new NftDetailsBaseLocators(),
     new NftDetailsBidLocators(),
-    new FooterLocators(page, device)
+    new FooterLocators()
   )
 }
 

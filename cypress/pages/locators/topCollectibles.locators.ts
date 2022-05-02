@@ -30,7 +30,6 @@ export default class TopCollectiblesLocators {
   readonly topCollectiblesShowMore: string
   readonly popupTopCollectiblesSortByDropdown: string
   readonly popupTopCollectiblesPeriodDropdown: string
-
   readonly marketplaceTitle: string
   readonly marketplaceCategoryArtButton: string
   readonly marketplaceCategoryCelebritiesButton: string
@@ -42,16 +41,16 @@ export default class TopCollectiblesLocators {
   readonly marketplaceIsCuratedButton: string
   readonly marketplaceFilterButton: string
   readonly marketplaceSortButton: string
-  numbatch: number
-  marketplaceNftCardContainer: string
-  existInfiniteLoader: string
-  popupFilterMinPriceInput: string
-  popupFilterApply: string
-  popupFilterAuction: string
-  popupFilterBuyNow: string
-  popupFilterClearAll: string
-  popupFilterMaxPriceInput: string
-  skiptopCollectiblesNftCardAuctionPrice: string
+  readonly numbatch: number
+  readonly marketplaceNftCardContainer: string
+  readonly existInfiniteLoader: string
+  readonly popupFilterMinPriceInput: string
+  readonly popupFilterApply: string
+  readonly popupFilterAuction: string
+  readonly popupFilterBuyNow: string
+  readonly popupFilterClearAll: string
+  readonly popupFilterMaxPriceInput: string
+  readonly skiptopCollectiblesNftCardAuctionPrice: string
 
   constructor (page: PAGE, device: DEVICE) {
     let topContainer = ''
@@ -101,14 +100,9 @@ export default class TopCollectiblesLocators {
     this.popupTopCollectiblesPeriodDropdown = `${this.topCollectibles} > div:nth-child(2) > div:nth-child(2) div[data-test-id="undefined-dropdown-menu"]`
 
     if (page === PAGE.HOME_PAGE) {
+      this.numtopCollectiblesNftCardContainer = 12
       this.valueTopCollectiblesSortBy = (value = 'Sales Volume') => `${this.topCollectibles} button > div:contains(${value})`
       this.topCollectiblesPeriod7days = `${this.topCollectibles} button > div:contains("Last 7 Days")`
-    }
-
-    this.topCollectiblesNftCardContainer = `${this.topCollectibles} div[data-test-id="nftCard-container"]`
-    this.numtopCollectiblesNftCardContainer = 12
-    this.topCollectiblesNftCardImage = `${this.topCollectibles} div[data-test-id="nftCard-image"]`
-    if (page === PAGE.HOME_PAGE) {
       this.topCollectiblesNftCardTotalSalesTag = `${this.topCollectibles} button[data-test-id="nftCard-total-sales-tag"]`
       this.topCollectiblesShowMore = `${this.topCollectibles} button > div:contains('show more')`
       this.topCollectiblesNftCardLink = `${this.topCollectibles} > div:nth-child(3) > div[class*="NftCard_grid__"] > a:nth-child(1)`
@@ -124,6 +118,8 @@ export default class TopCollectiblesLocators {
       this.topCollectiblesProfileLinkUrl = 'https://crypto.com/nft/profile/'
     }
 
+    this.topCollectiblesNftCardContainer = `${this.topCollectibles} div[data-test-id="nftCard-container"]`
+    this.topCollectiblesNftCardImage = `${this.topCollectibles} div[data-test-id="nftCard-image"]`
     this.topCollectiblesNftCardEditionsMintedLabel = `${this.topCollectibles} div[data-test-id="nftCard-editions-minted-label"]`
     this.topCollectiblesNftCardCroLogo = `${this.topCollectibles} svg[data-test-id="nftCard-cro-logo"]`
     this.topCollectiblesNftCardAssetName = `${this.topCollectibles} div[data-test-id="nftCard-asset-name"]`

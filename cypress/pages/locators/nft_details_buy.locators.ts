@@ -23,7 +23,7 @@ function nftDetailBuy (page: PAGE, device: DEVICE): void {
     new HeaderLocators(page, device),
     new NftDetailsBuyLocators(),
     new NftDetailsBaseLocators(),
-    new FooterLocators(page, device)
+    new FooterLocators()
   )
 }
 

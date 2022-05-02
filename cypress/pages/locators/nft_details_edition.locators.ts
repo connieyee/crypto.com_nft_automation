@@ -31,7 +31,7 @@ class NftDetailsEditionLocators {
     this.editionModel = 'div[data-test-id="select-edition-popup"]'
     this.editionCloseButton = `${this.editionModel} div[data-test-id="close-button"]`
 
-    // this.backButton = `${this.editionModel} a[data-test-id="back-button"]`
+    this.backButton = `${this.editionModel} a[data-test-id="back-button"]`
     this.editionTitle = `${this.editionModel} div[data-test-id="select-edition-title"]`
     this.allEditionsTab = `${this.editionModel} div[data-test-id="select-edition-all-editions-tab"]`
     this.forSaleLabel = `${this.editionModel} div[data-test-id="select-edition-for-sale-label"]`
@@ -62,7 +62,7 @@ function nftDetailEdition (page: PAGE, device: DEVICE): void {
     this,
     new HeaderLocators(page, device),
     new NftDetailsEditionLocators(),
-    new FooterLocators(page, device)
+    new FooterLocators()
   )
 }
 

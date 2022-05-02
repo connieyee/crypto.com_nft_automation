@@ -65,7 +65,7 @@ export default class NftDetailsBaseLocators {
   constructor () {
     this.initiUrl = 'https://crypto.com/nft/?asset='
     this.popupModalBody = 'div[data-test-id="undefined-popup"]'
-
+    // asset image
     this.skipAssetImage = 'img[data-test-id="listing-asset-image"]'
     this.skipAssetVideo = 'div[class*="AssetImageContainer_artImage__"] > video'
 

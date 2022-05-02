@@ -6,36 +6,42 @@ describe('HomePage testing', () => {
   it('Check homepage components in desktop min width resolution', () => {
     cy.viewport(DEVICE_MIN_WIDTH.DESKTOP, 800)
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     page.checkPageElem(PAGE.HOME_PAGE, DEVICE.DESKTOP)
   })
 
   it('Check homepage components in desktop max width resolution', () => {
     cy.viewport(DEVICE_MAX_WIDTH.DESKTOP, 800)
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     page.checkPageElem(PAGE.HOME_PAGE, DEVICE.DESKTOP)
   })
 
   it('Check homepage components in tablet min width resolution', () => {
     cy.viewport(DEVICE_MIN_WIDTH.TABLET, 1024)
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     page.checkPageElem(PAGE.HOME_PAGE, DEVICE.TABLET)
   })
 
   it('Check homepage components in tablet max width resolution', () => {
     cy.viewport(DEVICE_MAX_WIDTH.TABLET, 1024)
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     page.checkPageElem(PAGE.HOME_PAGE, DEVICE.TABLET)
   })
 
   it('Check homepage components in mobile min width resolution', () => {
     cy.viewport(DEVICE_MIN_WIDTH.MOBILE, 844)
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     page.checkPageElem(PAGE.HOME_PAGE, DEVICE.MOBILE)
   })
 
   it('Check homepage components in mobile max width resolution', () => {
     cy.viewport(DEVICE_MAX_WIDTH.MOBILE, 844)
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     page.checkPageElem(PAGE.HOME_PAGE, DEVICE.MOBILE)
   })
 
@@ -48,14 +54,14 @@ describe('HomePage testing', () => {
   it('Check top collections sorting in homepage', () => {
     cy.visit('/')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
-    // Sales Volume
+    // Sales Volume sorting
     cy.get(page.getElem(PAGE.HOME_PAGE, 'valueTopCollectionsSortBy', DEVICE.DESKTOP, null, 'Sales Volume')).should('be.visible')
     page.checkDescending(PAGE.HOME_PAGE, 'topCollectionVolume')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'topCollectionsPeriod7days', DEVICE.DESKTOP)).click()
     page.checkDescending(PAGE.HOME_PAGE, 'topCollectionVolume')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'topCollectionsPeriod30days', DEVICE.DESKTOP)).click()
     page.checkDescending(PAGE.HOME_PAGE, 'topCollectionVolume')
-    // Sale Volume %
+    // Select Sale Volume %
     cy.get(page.getElem(PAGE.HOME_PAGE, 'popupTopCollectionsSortByDropdown')).parent().parent().find('button').click()
     page.checkPopUpElem(PAGE.HOME_PAGE, 'popupTopCollectionsSortBy')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'popupTopCollectionsSortBySalesVolumePer')).click()
@@ -66,6 +72,7 @@ describe('HomePage testing', () => {
     const numNftCards = page.getElem(PAGE.HOME_PAGE, 'numtopCollectiblesNftCardContainer')
     cy.visit('/')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
+    // check elems of a NFT cards
     cy.get(page.getElem(PAGE.HOME_PAGE, 'topCollectiblesNftCardContainer')).should('have.length', numNftCards)
     cy.get(page.getElem(PAGE.HOME_PAGE, 'topCollectiblesNftCardImage')).should('have.length', numNftCards)
     cy.get(page.getElem(PAGE.HOME_PAGE, 'topCollectiblesNftCardTotalSalesTag')).should('have.length', numNftCards)
@@ -78,11 +85,12 @@ describe('HomePage testing', () => {
     cy.get(page.getElem(PAGE.HOME_PAGE, 'topCollectiblesNftCardLikesCount')).should('have.length', numNftCards)
   })
 
-  it('Check top creator shown in homepage in different resolution', () => {
+  it('Check number of top creator shown in homepage under different resolution', () => {
     const numDesktop = page.getElem(PAGE.HOME_PAGE, 'numIsSelected', DEVICE.DESKTOP)
     const numTablet = page.getElem(PAGE.HOME_PAGE, 'numIsSelected', DEVICE.TABLET)
     const numMobile = page.getElem(PAGE.HOME_PAGE, 'numIsSelected', DEVICE.MOBILE)
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     cy.viewport(DEVICE_MAX_WIDTH.DESKTOP, 800)
     cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: 5000 }).click()
     cy.get(page.getElem(PAGE.HOME_PAGE, 'isSelected')).should('have.length', numDesktop)
@@ -94,11 +102,23 @@ describe('HomePage testing', () => {
 
   it('Check draggable top creator in homepage', () => {
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     cy.get(page.getElem(PAGE.HOME_PAGE, 'creators')).eq(0).should('have.class', 'is-selected')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'isDraggable'))
       .trigger('mousedown', { button: 0 })
       .trigger('mousemove', 200, -200, { force: true })
       .trigger('mouseup')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'creators')).eq(0).should('not.have.class', 'is-selected')
+  })
+
+  it('Check show more button in homepage', () => {
+    const numNftCards = page.getElem(PAGE.HOME_PAGE, 'numtopCollectiblesNftCardContainer')
+    page.open('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
+    // check click show more button for 2 times
+    for (let i = 1; i < 3; i++) {
+      cy.get(page.getElem(PAGE.HOME_PAGE, 'topCollectiblesNftCardContainer')).should('have.length', parseInt(numNftCards) * i)
+      cy.get(page.getElem(PAGE.HOME_PAGE, 'topCollectiblesShowMore')).click()
+    }
   })
 })

@@ -5,7 +5,7 @@ const page = new Page()
 describe('NftDetailsPage testing', () => {
   it('Check bid nft_details_page components', () => {
     cy.viewport(DEVICE_MIN_WIDTH.DESKTOP, 800)
-    cy.visit('https://crypto.com/nft/?asset=614a9d79673570cf592ebfef06dca926&edition=76843b141e8086e97a4e6c829bb0ae02&detail-page=MARKETPLACE')
+    cy.visit('https://crypto.com/nft/?asset=29e6780668f16a12159bae980b78e9c5&edition=abba4142c3b6616ae2ea64e8ec2dda1f&detail-page=MARKETPLACE')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: TIMEOUT }).click()
     page.checkPageElem(PAGE.NFT_DETAILS_BID_PAGE, DEVICE.DESKTOP)
   })

@@ -22,7 +22,7 @@ function nftDetailAcceptingOffer (page: PAGE, device: DEVICE): void {
     new HeaderLocators(page, device),
     new NftDetailsAcceptingOfferLocators(),
     new NftDetailsBaseLocators(),
-    new FooterLocators(page, device)
+    new FooterLocators()
   )
 }
 

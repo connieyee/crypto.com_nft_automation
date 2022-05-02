@@ -27,11 +27,13 @@ export default class Page {
     return this.page.pageName
   }
 
+  // get elem in page
   public getElem (pageName: PAGE, locator: string, device?: DEVICE, options?: unknown, isFunction?: string): string {
     const obj = this.getPage(pageName, device, options)
     return isFunction ? obj[locator](isFunction) : obj[locator]
   }
 
+  // loop and check everthing visible/ exist in page
   public checkPageElem (pageName: PAGE, device: DEVICE, options?: unknown): void {
     const obj = this.getPage(pageName, device, options)
     Object.keys(obj).forEach((locator) => {
@@ -41,6 +43,7 @@ export default class Page {
         cy.get(obj[locator]()).should('be.visible')
       } else if (locator.startsWith('exist')) {
         cy.get(obj[locator]).should('exist')
+        // except these conditions
       } else if (!locator.startsWith('num') &&
       !locator.startsWith('popup') &&
       !locator.startsWith('skip') &&
@@ -61,6 +64,7 @@ export default class Page {
     })
   }
 
+  // loop and check all elem ends with 'Link' in page
   public checkPageRedirect (pageName: PAGE): void {
     const obj = this.getPage(pageName)
     Object.keys(obj).forEach((locator) => {
@@ -74,17 +78,19 @@ export default class Page {
             .invoke('removeAttr', 'target')
         }
         cy.get(selector).click({ force: true })
+        // check these elem will redirect browser to url of 'LinkUrl'
         const url = this.getElem(pageName, `${locator}Url`)
         cy.url().should('include', url)
         cy.go('back')
+        // for those redirecting domain
       } else if (locator.endsWith('Href')) {
         const href = this.getElem(pageName, `${locator}Url`)
-        cy.log(href)
         cy.get(selector).should('have.attr', 'href', href)
       }
     })
   }
 
+  // loop and check all elem starts with {}
   public checkPopUpElem (pageName: PAGE, popupName: string): void {
     const pageObj = this.getPage(pageName)
     Object.keys(pageObj).forEach((locator) => {
@@ -95,6 +101,7 @@ export default class Page {
     })
   }
 
+  // check array of locator in descending order
   public checkDescending (pageName: PAGE, elemName: string): void {
     const arrayDollars = []
     cy.get(this.getElem(pageName, elemName)).each(($el) => {

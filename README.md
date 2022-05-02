@@ -4,7 +4,7 @@ This repo contains an automation test on Crypto.com/nft, with the tests written 
 
 ### A short description on design and test cases
 
-- Use Cypress, Typescript as the framework for this scripting
+- Use Cypress, Typescript as the framework for this testing
 - Use Eslint and Tslint to standardise the coding style 
 - Implement GitHub CICD to ensure every code push matches the above standard
 - Use Page Factory and Page Object Model Design patterns
@@ -30,13 +30,15 @@ This repo contains an automation test on Crypto.com/nft, with the tests written 
 
 ## Getting Started
 
-1. install nodejs from https://nodejs.org/en/download/
+1. Check System reuirements form https://docs.cypress.io/guides/getting-started/installing-cypress#What-you-ll-learn
 
-2. cd into the repo `cd crypto.com_nft_automation`
+2. install nodejs from https://nodejs.org/en/download/
 
-3. install node module `npm install`
+3. cd into the repo `cd crypto.com_nft_automation`
 
-4. then run `npm run cypress:open`
+4. install node module `npm install`
+
+5. then run `npm run cypress:open`
 
 ## Linting
 

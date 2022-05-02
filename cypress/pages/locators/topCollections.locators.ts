@@ -9,7 +9,6 @@ export default class TopCreatorLocators {
   readonly topCollectionsPeriod30days: string
   readonly numTopCollectionsDollarSign: number
   readonly topCollectionsDollarSign: string
-
   readonly topCollectionsAvatarLink: string
   readonly topCollectionsAvatarLinkUrl: string
   readonly topCollectionsNameLink: string
@@ -23,7 +22,6 @@ export default class TopCreatorLocators {
   readonly popupTopCollectionsSortBySalesVolumePer: string
   readonly topCollectionCell: string
   readonly topCollectionVolume: string
-
   readonly topCollectionsRightArrow: string
   readonly topCollectionsLeftArrow: string
 
