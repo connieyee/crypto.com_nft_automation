@@ -45,18 +45,18 @@ export default class Page {
       !locator.startsWith('popup') &&
       !locator.startsWith('skip') &&
       !locator.endsWith('Url')) {
-        // if (pageName === PAGE.NFT_DETAILS_BASE_PAGE ||
-        //   pageName === PAGE.NFT_DETAILS_ACCEPTING_OFFER_PAGE ||
-        //   pageName === PAGE.NFT_DETAILS_BUY_PAGE ||
-        //   pageName === PAGE.NFT_DETAILS_BID_PAGE ||
-        //   pageName === PAGE.NFT_DETAILS_EDITION_PAGE) {
-        cy.get(obj[locator])
-          .scrollIntoView({ offset: { top: -50, left: 0 } })
-          .should('be.visible')
-        // } else {
-        //   cy.get(obj[locator])
-        //     .should('be.visible')
-        // }
+        if (pageName === PAGE.NFT_DETAILS_BASE_PAGE ||
+          pageName === PAGE.NFT_DETAILS_ACCEPTING_OFFER_PAGE ||
+          pageName === PAGE.NFT_DETAILS_BUY_PAGE ||
+          pageName === PAGE.NFT_DETAILS_BID_PAGE ||
+          pageName === PAGE.NFT_DETAILS_EDITION_PAGE) {
+          cy.get(obj[locator])
+            .scrollIntoView({ offset: { top: -50, left: 0 } })
+            .should('be.visible')
+        } else {
+          cy.get(obj[locator])
+            .should('be.visible')
+        }
       }
     })
   }

@@ -94,10 +94,11 @@ describe('HomePage testing', () => {
 
   it('Check draggable top creator in homepage', () => {
     cy.visit('/')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'creators')).eq(0).should('have.class', 'is-selected')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'isDraggable'))
       .trigger('mousedown', { button: 0 })
       .trigger('mousemove', 200, -200, { force: true })
       .trigger('mouseup')
-    cy.get(page.getElem(PAGE.HOME_PAGE, 'creators')).eq(0).should('not.have.attr', 'class', 'is-selected')
+    cy.get(page.getElem(PAGE.HOME_PAGE, 'creators')).eq(0).should('not.have.class', 'is-selected')
   })
 })

@@ -51,6 +51,7 @@ export default class TopCollectiblesLocators {
   popupFilterBuyNow: string
   popupFilterClearAll: string
   popupFilterMaxPriceInput: string
+  skiptopCollectiblesNftCardAuctionPrice: string
 
   constructor (page: PAGE, device: DEVICE) {
     let topContainer = ''
@@ -92,7 +93,7 @@ export default class TopCollectiblesLocators {
       this.popupFilterBuyNow = `${this.topCollectibles} button[data-test-id="marketplace-filter-buyNow-button"]`
       this.popupFilterAuction = `${this.topCollectibles} button[data-test-id="marketplace-filter-auction-button"]`
       this.popupFilterApply = `${this.topCollectibles} button[data-test-id="marketplace-filter-apply-button"]`
-      // this.popupFilterClearAll = `${this.topCollectibles} button[data-test-id="marketplace-filter-clearAll-button"]`
+      this.popupFilterClearAll = `${this.topCollectibles} button[data-test-id="marketplace-filter-clearAll-button"]`
     }
 
     // Top Collectibles
@@ -134,5 +135,6 @@ export default class TopCollectiblesLocators {
     this.topCollectiblesNftCardCreatorUsername = `${this.topCollectibles} span[data-test-id="nftCard-creator-username"]`
     this.topCollectiblesLikeButton = `${this.topCollectibles} svg[data-test-id="like-button"]`
     this.topCollectiblesNftCardLikesCount = `${this.topCollectibles} div[data-test-id="nftCard-likes-count"]`
+    this.skiptopCollectiblesNftCardAuctionPrice = `${this.topCollectibles} div[data-test-id="nftCard-auction-price"]`
   }
 }

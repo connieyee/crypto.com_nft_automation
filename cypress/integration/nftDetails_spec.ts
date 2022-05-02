@@ -2,7 +2,7 @@ import { PAGE, DEVICE_MIN_WIDTH, DEVICE, TIMEOUT } from '../pages/constants'
 import Page from '../pages/page'
 const page = new Page()
 
-describe('nftDetailsPage testing', () => {
+describe('NftDetailsPage testing', () => {
   it('Check bid nft_details_page components', () => {
     cy.viewport(DEVICE_MIN_WIDTH.DESKTOP, 800)
     cy.visit('https://crypto.com/nft/?asset=614a9d79673570cf592ebfef06dca926&edition=76843b141e8086e97a4e6c829bb0ae02&detail-page=MARKETPLACE')

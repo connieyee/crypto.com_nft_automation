@@ -36,7 +36,7 @@ This repo contains an automation test on Crypto.com/nft, with the tests written 
 
 3. install node module `npm install`
 
-4. then run `npm run test`
+4. then run `npm run cypress:open`
 
 ## Linting
 

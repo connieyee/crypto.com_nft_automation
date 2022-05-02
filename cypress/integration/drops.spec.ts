@@ -20,7 +20,7 @@ describe('Drops page testing', () => {
     page.checkPageElem(PAGE.DROPS_PAGE, DEVICE.DESKTOP, { data: dropsApi })
   })
 
-  it('Check drops components in desktop min width resolution', () => {
+  it('Check drops components in desktop max width resolution', () => {
     cy.viewport(DEVICE_MAX_WIDTH.DESKTOP, 800)
     page.open('drops')
     cy.get(page.getElem(PAGE.HOME_PAGE, 'consentAcceptAll'), { timeout: 5000 }).click()
