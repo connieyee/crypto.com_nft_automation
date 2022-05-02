@@ -12,6 +12,8 @@ class NftDetailsBidLocators {
   readonly nftDetailBidButton: string
   readonly nftDetailPrice: string
   readonly listingBidsTab: string
+  readonly actionBarRoyaltiesMessage: string
+  readonly popupBidsContainer: string
 
   constructor () {
     this.modalBody = 'div[data-test-id="undefined-popup"]'
@@ -22,6 +24,8 @@ class NftDetailsBidLocators {
     this.bidCountdownLabel = `${this.modalBody} div[data-test-id="bid-countdown-label"]`
     this.bidCountdown = `${this.modalBody} div[data-test-id="bid-countdown"]`
     this.listingBidsTab = `${this.modalBody} div[data-test-id="listing-bids-tab"]`
+    this.actionBarRoyaltiesMessage = `${this.modalBody} div[data-test-id="action-button-bar-royalties-message"]`
+    this.popupBidsContainer = `${this.modalBody} div[data-test-id="listing-bids-container"]`
   }
 }
 

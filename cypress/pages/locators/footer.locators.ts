@@ -1,4 +1,3 @@
-import { DEVICE, PAGE } from '../constants'
 
 export default class FooterLocators {
   readonly footerContainer: string
@@ -19,9 +18,9 @@ export default class FooterLocators {
   readonly footerTelegramHref: string
   readonly footerTelegramHrefUrl: string
 
-  constructor (page: PAGE, device: DEVICE) {
+  constructor () {
     // footer
-    this.footerContainer = 'div[class*="Footer_container__"]'
+    this.footerContainer = '#root div[class*="Footer_container__"]'
     this.footerInstagramHref = `${this.footerContainer} a[data-test-id="footer-instagram"]`
     this.footerInstagramHrefUrl = 'https://www.instagram.com/cryptocomnft'
     this.footerTwitterHref = `${this.footerContainer} a[data-test-id="footer-twitter"]`

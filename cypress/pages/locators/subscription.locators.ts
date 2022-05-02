@@ -1,4 +1,3 @@
-import { DEVICE, PAGE } from '../constants'
 
 export default class SubscriptionLocators {
   readonly subscriptionInput: string
@@ -8,7 +7,7 @@ export default class SubscriptionLocators {
   readonly subscriptionLink: string
   readonly subscriptionLinkUrl: string
 
-  constructor (page: PAGE, device: DEVICE) {
+  constructor () {
     // Subscription
     this.subscriptionBlock = 'div[id="email-subscription-block"]'
     this.subscriptionInput = 'input[data-test-id="undefined-input"]'
